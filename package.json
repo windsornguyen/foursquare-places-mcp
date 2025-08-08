@@ -4,15 +4,17 @@
   "description": "Model Context Protocol server for Foursquare Places API",
   "main": "dist/index.js",
   "bin": {
-    "foursquare-places-mcp-server": "dist/index.js"
+    "foursquare-places-mcp": "./dist/index.js"
   },
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "start:http": "node dist/index.js --port 3004",
-    "dev": "tsx src/index.ts",
+    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
+    "start": "node dist/index.js --port 3004",
+    "dev:stdio": "tsx src/index.ts",
     "dev:http": "tsx src/index.ts --port 3004",
+    "prepare": "bun run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector dist/index.js",
     "test": "vitest",
     "lint": "eslint src/**/*.ts",
     "typecheck": "tsc --noEmit"

@@ -1,5 +1,12 @@
 import { z } from 'zod';
 
+/**
+ * @fileoverview Type definitions and validation schemas for Foursquare Places API
+ * @description Provides comprehensive type safety and runtime validation for all API interactions
+ * @author Claude Code
+ * @version 1.0.0
+ */
+
 // Base coordinate schema
 export const CoordinateSchema = z.object({
   latitude: z.number().min(-90).max(90),
